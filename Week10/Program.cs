@@ -8,6 +8,7 @@ namespace Week10
 {
     static class Program
     {
+        static List<DemoForm> forms = new List<DemoForm>();
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -16,7 +17,22 @@ namespace Week10
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            for (int i= 0; i < 5; i ++)
+            {
+                forms.Add(new DemoForm(i));
+            }
+            Application.Run(forms[0]);
+        }
+
+        public static void NavigateTo(int index)
+        {
+            for(int i = 0; i < forms.Count; i++)
+            {
+                if (i == index)
+                    forms[i].Show();
+                else
+                    forms[i].Hide();
+            }
         }
     }
 }
